@@ -233,6 +233,23 @@ fileInput.addEventListener("change", () => {
 container.appendChild(fileLabel);
 container.appendChild(fileInput);
 
+        const resetButton = document.createElement("button");
+resetButton.textContent = "Reset to Default";
+resetButton.style.marginTop = "15px";
+resetButton.style.padding = "6px 10px";
+resetButton.style.backgroundColor = "#7289da";
+resetButton.style.color = "#fff";
+resetButton.style.border = "none";
+resetButton.style.borderRadius = "4px";
+resetButton.style.cursor = "pointer";
+
+resetButton.addEventListener("click", () => {
+    this.saveSettings(defaultSettings);
+    BdApi.alert("OnekoSmart", "Settings have been reset to default. Please reload the plugin to apply the change.");
+});
+
+container.appendChild(resetButton);
+        
         return container;
     }    
 };
