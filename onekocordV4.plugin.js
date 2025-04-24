@@ -182,6 +182,7 @@ if (this.idleAnimation === "purring") {
     getSettingsPanel() {
         const container = document.createElement("div");
         container.style.padding = "10px";
+        container.style.color = "#fff";
     
         const inputLabel = document.createElement("label");
         inputLabel.textContent = "Sprite URL:";
