@@ -1,7 +1,7 @@
 /**
  * @name OnekoSmart
  * @author ShadowieBunny
- * @version 4.1.0
+ * @version 4.2.0
  * @description A smart Oneko cat that follows your cursor intelligently and uses accurate animations.
  */
 const defaultSettings = {
@@ -57,11 +57,11 @@ module.exports = class OnekoSmart {
         this.cat?.remove();
     }
     getSettings() {
-        return BdApi.loadData("OnekoSmart", "settings") || defaultSettings;
+        return BdApi.Data.load("OnekoSmart", "settings") || defaultSettings;
     }
     
     saveSettings(settings) {
-        BdApi.saveData("OnekoSmart", "settings", settings);
+        BdApi.Data.save("OnekoSmart", "settings", settings);
     }
     
     getDirection(dx, dy) {
@@ -200,7 +200,7 @@ if (this.idleAnimation === "purring") {
             const newSettings = this.getSettings();
             newSettings.spriteUrl = input.value;
             this.saveSettings(newSettings);
-            BdApi.alert("OnekoSmart", "Sprite URL updated. Please reload the plugin to apply the change.");
+            bdapi.ui.alert("OnekoSmart", "Sprite URL updated. Please reload the plugin to apply the change.");
         });
     
         container.appendChild(inputLabel);
@@ -225,7 +225,7 @@ fileInput.addEventListener("change", () => {
         const newSettings = this.getSettings();
         newSettings.spriteUrl = reader.result; // base64 data URL
         this.saveSettings(newSettings);
-        BdApi.alert("OnekoSmart", "Local image loaded! Please reload the plugin to apply the change.");
+        bdapi.ui.alert("OnekoSmart", "Local image loaded! Please reload the plugin to apply the change.");
     };
     reader.readAsDataURL(file);
 });
@@ -233,7 +233,7 @@ fileInput.addEventListener("change", () => {
 container.appendChild(fileLabel);
 container.appendChild(fileInput);
 
-        const resetButton = document.createElement("button");
+const resetButton = document.createElement("button");
 resetButton.textContent = "Reset to Default";
 resetButton.style.marginTop = "15px";
 resetButton.style.padding = "6px 10px";
@@ -245,11 +245,11 @@ resetButton.style.cursor = "pointer";
 
 resetButton.addEventListener("click", () => {
     this.saveSettings(defaultSettings);
-    BdApi.alert("OnekoSmart", "Settings have been reset to default. Please reload the plugin to apply the change.");
+    bdapi.ui.alert("OnekoSmart", "Settings have been reset to default. Please reload the plugin to apply the change.");
 });
 
 container.appendChild(resetButton);
-        
+
         return container;
     }    
 };
