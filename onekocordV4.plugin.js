@@ -201,7 +201,7 @@ if (this.idleAnimation === "purring") {
             const newSettings = this.getSettings();
             newSettings.spriteUrl = input.value;
             this.saveSettings(newSettings);
-            bdapi.ui.alert("OnekoSmart", "Sprite URL updated. Please reload the plugin to apply the change.");
+            BdApi.UI.alert("OnekoSmart", "Sprite URL updated. Please reload the plugin to apply the change.");
         });
     
         container.appendChild(inputLabel);
@@ -226,7 +226,7 @@ fileInput.addEventListener("change", () => {
         const newSettings = this.getSettings();
         newSettings.spriteUrl = reader.result; // base64 data URL
         this.saveSettings(newSettings);
-        bdapi.ui.alert("OnekoSmart", "Local image loaded! Please reload the plugin to apply the change.");
+        BdApi.UI.alert("OnekoSmart", "Local image loaded! Please reload the plugin to apply the change.");
     };
     reader.readAsDataURL(file);
 });
@@ -246,7 +246,7 @@ resetButton.style.cursor = "pointer";
 
 resetButton.addEventListener("click", () => {
     this.saveSettings(defaultSettings);
-    bdapi.ui.alert("OnekoSmart", "Settings have been reset to default. Please reload the plugin to apply the change.");
+    BdApi.UI.alert("OnekoSmart", "Settings have been reset to default. Please reload the plugin to apply the change.");
 });
 
 container.appendChild(resetButton);
